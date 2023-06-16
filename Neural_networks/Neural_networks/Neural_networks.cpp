@@ -34,7 +34,7 @@ int main()
 {   
     unsigned int start_time = clock();
     setlocale(LC_ALL, "Russian");
-    fstream fin("Wes1.txt");
+    fstream fin("Wes.txt");
     fstream fn("Sloi.txt");
     fstream f("D:\\Документы\\Творческий проект\\Obrab\\Obrab\\Otv1.txt");
     string st;
@@ -132,6 +132,8 @@ int main()
         cout << zn[kolsl - 1][0] << '\n';
     }*/
     fstream finpr("D:\\Документы\\Творческий проект\\Obrab\\Obrab\\Test.txt");
+    double sumotkl = 0;
+    int kolobv = 0;
     while (!finpr.eof())
     {
         for (int i = 0; i < kol - 1; i++)
@@ -141,8 +143,11 @@ int main()
         finpr >> protv;
         double x = zn[kolsl - 1][0] * (maxp - minp) + minp;
         double y = protv * (maxp - minp) + minp;
-        cout << x << '\t' << y << '\t' << (max(protv, zn[kolsl - 1][0]) - min(protv, zn[kolsl - 1][0])) / max(protv, zn[kolsl - 1][0]) * 100 << "% \n";
+        sumotkl += (max(y, x) - min(y, x)) / max(y, x) * 100;
+        kolobv++;
+        cout << x << '\t' << y << '\t' << (max(y, x) - min(y, x)) / max(y, x) * 100 << "% \n";
     }
+    cout << sumotkl / kol;
     return 0;
 }
 void Comput(int dl[]) {
@@ -279,7 +284,3 @@ int POD(int par) {
     }
     return x;
 }    
-//0.000025 30 20 20
-//0.000031 30 
-//0.000031 30 20
-//0.000032 20 20  20
